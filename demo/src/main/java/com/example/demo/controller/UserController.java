@@ -40,4 +40,9 @@ public class UserController {
         return userService.updateUser(user,id);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<Map<String, Object>> loginApp(@RequestBody User user) {
+        return userService.loginApp(user);
+    }
+
 }

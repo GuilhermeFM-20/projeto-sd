@@ -6,19 +6,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-
 @Entity
 @Data
-public class User {
-    
+public class Activity{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String userName;
-    private String password;
-    private String email;
-    private int weeklyExerciseGoalInMinutes;
-    private String currentActivityLevel;
+    private String activityType;
+    private int durationMinutes;
+    private String intensityLevel;
 
 }
