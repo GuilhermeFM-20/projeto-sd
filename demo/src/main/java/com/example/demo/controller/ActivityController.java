@@ -20,6 +20,11 @@ public class ActivityController {
         return activityService.getAllActivities();
     }
 
+    @GetMapping("/user/{id}")
+    public ResponseEntity<Map<String, Object>> getAllActivityOfUser(@PathVariable Long id) {
+        return activityService.getAllActivityOfUser(id);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Map<String, Object>> getActivityById(@PathVariable Long id) {
         return activityService.getActivityById(id);
