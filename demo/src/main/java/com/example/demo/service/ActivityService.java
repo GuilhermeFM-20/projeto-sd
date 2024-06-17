@@ -23,6 +23,15 @@ public class ActivityService {
         }
     }
 
+    public ResponseEntity<Map<String, Object>> getAllActivityOfUser(Long id){
+        try {
+            System.out.println("ID DO USER:"+id);
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("data",activityRepository.findByIdUser(id)));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro ao trazer os pesos desse usuário."));
+        }
+    }
+
     public ResponseEntity<Map<String, Object>> getActivityById(Long id) {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(Map.of("data", activityRepository.findById(id).orElse(null)));

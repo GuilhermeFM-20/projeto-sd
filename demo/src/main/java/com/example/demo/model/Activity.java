@@ -13,6 +13,7 @@ public class Activity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    public Long idUser;
     private String name;
     private String activityType;
     private int durationMinutes;
