@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Meals;
-import com.example.demo.model.Weight;
 import com.example.demo.repository.MealsRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,7 @@ public class MealsService {
             System.out.println("ID DO USER:"+id);
             return ResponseEntity.status(HttpStatus.OK).body(Map.of("data",mealsRepository.findByIdUser(id)));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro ao trazer os pesos desse usuário."));
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro ao trazer as refeições."));
         }
     }
 
@@ -46,7 +45,7 @@ public class MealsService {
     public ResponseEntity<Map<String, Object>> saveMeals(Meals meals) {
         try{
             return ResponseEntity.status(HttpStatus.OK).body(
-                Map.of("msg", "Usuário cadastrado com sucesso",
+                Map.of("msg", "Refeição cadastrado com sucesso",
                 "data",mealsRepository.save(meals)
             ));
         }catch(Exception e){
@@ -66,7 +65,7 @@ public class MealsService {
             mealsLocalize.setType(user.getType());
     
             return ResponseEntity.status(HttpStatus.OK).body(
-                Map.of("msg", "Usuário excluído com sucesso",
+                Map.of("msg", "Refeição ataulizada com sucesso",
                 "data",mealsRepository.save(mealsLocalize)
             ));
         }catch(Exception e){
@@ -79,7 +78,7 @@ public class MealsService {
         try{
             mealsRepository.deleteById(id);
 
-            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Usuário excluído com sucesso"));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Refeição excluída com sucesso"));
         }catch(Exception e){
                 
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro na exclusão."));

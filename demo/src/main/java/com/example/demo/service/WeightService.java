@@ -66,7 +66,7 @@ public class WeightService {
             weightLocalize.setIdUser(user.getIdUser());
     
             return ResponseEntity.status(HttpStatus.OK).body(
-                Map.of("msg", "Usuário excluído com sucesso",
+                Map.of("msg", "Peso ataulizado com sucesso",
                 "data",weightRepository.save(weightLocalize)
             ));
         }catch(Exception e){
@@ -79,7 +79,7 @@ public class WeightService {
         try{
             weightRepository.deleteById(id);
 
-            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Usuário excluído com sucesso"));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Peso excluído com sucesso"));
         }catch(Exception e){
                 
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro na exclusão."));
