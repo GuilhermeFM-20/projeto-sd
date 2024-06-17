@@ -69,10 +69,10 @@ public class UserService {
         try{
             userRepository.deleteById(id);
 
-            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Usuário excluído com sucesso"));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Usuário ataulizado com sucesso"));
         }catch(Exception e){
                 
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro na exclusão."));
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro na ataulização."));
         }
     }
 
