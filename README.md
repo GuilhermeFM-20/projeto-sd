@@ -5,6 +5,7 @@ Este projeto visa implementar um serviço RESTful para o aplicativo do Atlas Fit
 ## Tecnologias Usadas
 
 - Swagger
+- Java
 - Spring Boot
 - Maven
 - MySQL
