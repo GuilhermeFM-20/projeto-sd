@@ -8,5 +8,5 @@ import com.example.demo.model.Weight;
 
 @Repository
 public interface WeightRepository extends JpaRepository<Weight, Long> {
-    List<Weight> findByIdUser(Long idUser);
+    List<Weight> findByIdUserOrderByIdDesc(Long idUser);
 }

@@ -26,7 +26,7 @@ public class WeightService {
     public ResponseEntity<Map<String, Object>> getAllWeightsOfUser(Long id){
         try {
             System.out.println("ID DO USER:"+id);
-            return ResponseEntity.status(HttpStatus.OK).body(Map.of("data",weightRepository.findByIdUser(id)));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("data",weightRepository.findByIdUserOrderByIdDesc(id)));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro ao trazer os pesos desse usuário."));
         }
