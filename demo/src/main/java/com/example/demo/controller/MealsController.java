@@ -8,8 +8,6 @@ import java.util.Map;
 import com.example.demo.model.Meals;
 import com.example.demo.service.MealsService;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
-
 @RestController
 @RequestMapping("/api/meals")
 public class MealsController {
@@ -25,6 +23,11 @@ public class MealsController {
     @GetMapping("/user/{id}")
     public ResponseEntity<Map<String, Object>> getAllMealsOfUser(@PathVariable Long id) {
         return mealsService.getAllMealsOfUser(id);
+    } 
+
+    @PutMapping("/user/search/{id}")
+    public ResponseEntity<Map<String, Object>> getAllMealsSerarch(@PathVariable Long id, @RequestBody Meals meals) {
+        return mealsService.getAllMealsSearch(id,meals);
     }
 
 

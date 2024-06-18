@@ -10,4 +10,6 @@ import com.example.demo.model.Meals;
 @Repository
 public interface MealsRepository extends JpaRepository<Meals, Long> {
     List<Meals> findByIdUser(Long idUser);
+    List<Meals> findByNameAndIdUser(String name, Long idUser);
+    List<Meals> findByNameLikeAndIdUser(String name, Long idUser);
 }

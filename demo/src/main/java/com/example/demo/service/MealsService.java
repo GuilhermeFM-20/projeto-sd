@@ -32,6 +32,19 @@ public class MealsService {
         }
     }
 
+    public ResponseEntity<Map<String, Object>> getAllMealsSearch(Long id, Meals meals){
+        try {
+
+            if (meals.getName().isEmpty()) {
+                return ResponseEntity.status(HttpStatus.OK).body(Map.of("data",mealsRepository.findByIdUser(id)));    
+            }
+
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("data",mealsRepository.findByNameLikeAndIdUser(meals.getName(),id)));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro ao trazer os pesos desse usuário."));
+        }
+    }
+
     public ResponseEntity<Map<String, Object>> getMealsById(Long id) {
         try{
             

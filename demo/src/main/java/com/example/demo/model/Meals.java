@@ -19,7 +19,7 @@ public class Meals {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     public Long idUser;
-    public String Name; 
+    public String name; 
     public float calories;
     public String type;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")

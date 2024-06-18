@@ -1,14 +1,12 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Weight;
+import com.example.demo.service.WeightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Map;
-
-import com.example.demo.model.Weight;
-import com.example.demo.service.WeightService;
-
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @RequestMapping("/api/weight")
