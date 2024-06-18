@@ -19,7 +19,7 @@ public class MealsService {
         try{
             return ResponseEntity.status(HttpStatus.OK).body(Map.of("data",mealsRepository.findAll()));
         }catch(Exception e){
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro na atualização."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve algum erro na atualização."));
         }
     }
 
@@ -28,7 +28,7 @@ public class MealsService {
             System.out.println("ID DO USER:"+id);
             return ResponseEntity.status(HttpStatus.OK).body(Map.of("data",mealsRepository.findByIdUser(id)));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro ao trazer as refeições."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve algum erro ao trazer as refeições."));
         }
     }
 
@@ -41,7 +41,7 @@ public class MealsService {
 
             return ResponseEntity.status(HttpStatus.OK).body(Map.of("data",mealsRepository.findByNameLikeAndIdUser(meals.getName(),id)));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro ao trazer os pesos desse usuário."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve algum erro ao trazer os pesos desse usuário."));
         }
     }
 
@@ -51,7 +51,7 @@ public class MealsService {
             return ResponseEntity.status(HttpStatus.OK).body(Map.of("data",mealsRepository.findById(id).orElse(null)));
         }catch(Exception e){
                     
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro na atualização."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve algum erro na atualização."));
         }
     }
 
@@ -63,7 +63,7 @@ public class MealsService {
             ));
         }catch(Exception e){
                 
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro na atualização."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve algum erro na atualização."));
         }
     }
 
@@ -83,7 +83,7 @@ public class MealsService {
             ));
         }catch(Exception e){
 
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro na atualização."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve algum erro na atualização."));
         }
     }
 
@@ -94,7 +94,7 @@ public class MealsService {
             return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Refeição excluída com sucesso"));
         }catch(Exception e){
                 
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro na exclusão."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve algum erro na exclusão."));
         }
     }
 

@@ -19,7 +19,7 @@ public class ActivityService {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(Map.of("data", activityRepository.findAll()));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve um erro ao recuperar as atividades."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve um erro ao recuperar as atividades."));
         }
     }
 
@@ -28,7 +28,7 @@ public class ActivityService {
             System.out.println("ID DO USER:"+id);
             return ResponseEntity.status(HttpStatus.OK).body(Map.of("data",activityRepository.findByIdUser(id)));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro ao trazer os pesos desse usuário."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve algum erro ao trazer os pesos desse usuário."));
         }
     }
 
@@ -41,7 +41,7 @@ public class ActivityService {
             return ResponseEntity.status(HttpStatus.OK).body(Map.of("data",activityRepository.findByNameLikeAndIdUser(activity.getName(),id)));
 
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro ao trazer os pesos desse usuário."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve algum erro ao trazer os pesos desse usuário."));
         }
     }
 
@@ -49,7 +49,7 @@ public class ActivityService {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(Map.of("data", activityRepository.findById(id).orElse(null)));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve um erro ao recuperar a atividade."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve um erro ao recuperar a atividade."));
         }
     }
 
@@ -60,7 +60,7 @@ public class ActivityService {
                             "data", activityRepository.save(activity)
                     ));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve um erro ao salvar a atividade."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve um erro ao salvar a atividade."));
         }
     }
 
@@ -82,7 +82,7 @@ public class ActivityService {
             }
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("msg", "Atividade não encontrada"));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve um erro ao atualizar a atividade."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve um erro ao atualizar a atividade."));
         }
     }
 
@@ -95,7 +95,7 @@ public class ActivityService {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("msg", "Atividade não encontrada"));
             }
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve um erro ao deletar a atividade."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve um erro ao deletar a atividade."));
         }
     }
 }

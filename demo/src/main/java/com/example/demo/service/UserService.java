@@ -19,7 +19,7 @@ public class UserService {
         try{
             return ResponseEntity.status(HttpStatus.OK).body(Map.of("data",userRepository.findAll()));
         }catch(Exception e){
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro na atualização."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve algum erro na atualização."));
         }
     }
 
@@ -28,13 +28,16 @@ public class UserService {
             return ResponseEntity.status(HttpStatus.OK).body(Map.of("data",userRepository.findById(id).orElse(null)));
         }catch(Exception e){
                     
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro na atualização."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve algum erro na atualização."));
         }
     }
 
     public ResponseEntity<Map<String, Object>> saveUser(User user) {
         try{
+            System.out.println(user.getEmail()+", "+user.getPassword());
             user.setPassword(DigestUtils.md5Hex(user.getPassword()));
+
+            System.out.println(user.getPassword());
 
             return ResponseEntity.status(HttpStatus.OK).body(
                 Map.of("msg", "Usuário cadastrado com sucesso",
@@ -42,7 +45,7 @@ public class UserService {
             ));
         }catch(Exception e){
                 
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro na atualização."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve algum erro na atualização."));
         }
     }
 
@@ -66,7 +69,7 @@ public class UserService {
             ));
         }catch(Exception e){
 
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro na atualização."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve algum erro na atualização."));
         }
     }
 
@@ -77,25 +80,29 @@ public class UserService {
             return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Usuário ataulizado com sucesso"));
         }catch(Exception e){
                 
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro na ataulização."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve algum erro na ataulização."));
         }
     }
 
     public ResponseEntity<Map<String, Object>> loginApp(User user){
         
         try{
+
+            System.out.println(user.getEmail()+", "+user.getPassword());
             user.setPassword(DigestUtils.md5Hex(user.getPassword()));
 
-            User userLocalize = userRepository.findByUserNameAndPassword(user.getUserName(), user.getPassword());
+            System.out.println(user.getPassword());
+
+            User userLocalize = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
 
             if(userLocalize != null){
                 return ResponseEntity.status(HttpStatus.OK).body(Map.of("status",true,"data",userLocalize));
             }
 
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("status",false,"msg", "Senha ou login inválido"));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("status",false,"msg", "Senha ou login inválido"));
         }catch(Exception e){
                 
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(Map.of("msg", "Houve algum erro na exclusão."));
+            return ResponseEntity.status(HttpStatus.OK).body(Map.of("msg", "Houve algum erro no login."));
         }
     }
 
