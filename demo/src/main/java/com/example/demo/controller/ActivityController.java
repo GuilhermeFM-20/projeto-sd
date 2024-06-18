@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Activity;
+import com.example.demo.model.Meals;
 import com.example.demo.service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,11 @@ public class ActivityController {
     @GetMapping("/{id}")
     public ResponseEntity<Map<String, Object>> getActivityById(@PathVariable Long id) {
         return activityService.getActivityById(id);
+    }
+
+    @PutMapping("/user/search/{id}")
+    public ResponseEntity<Map<String, Object>> getAllActivitySerarch(@PathVariable Long id, @RequestBody Activity activity) {
+        return activityService.getAllActivitySearch(id,activity);
     }
 
     @PostMapping("/")

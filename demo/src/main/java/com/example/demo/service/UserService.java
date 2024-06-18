@@ -51,12 +51,17 @@ public class UserService {
             User userLocalize = userRepository.findById(id).orElse(null);        
             userLocalize.setName(user.getName());
             userLocalize.setUserName(user.getUserName());
+            userLocalize.setBirthDate(user.getBirthDate());
+            userLocalize.setEmail(user.getEmail());
+            userLocalize.setGender(user.getGender());
+            userLocalize.setHeight(user.getHeight());
+            
             if(!user.getPassword().isEmpty()){
                 userLocalize.setPassword(DigestUtils.md5Hex(user.getPassword()));
             }
 
             return ResponseEntity.status(HttpStatus.OK).body(
-                Map.of("msg", "Usuário excluído com sucesso",
+                Map.of("msg", "Usuário atualizado com sucesso",
                 "data",userRepository.save(userLocalize)
             ));
         }catch(Exception e){
