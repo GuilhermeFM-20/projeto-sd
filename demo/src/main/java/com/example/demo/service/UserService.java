@@ -86,7 +86,7 @@ public class UserService {
         try{
             user.setPassword(DigestUtils.md5Hex(user.getPassword()));
 
-            User userLocalize = userRepository.findByUserNameAndPassword(user.getUserName(), user.getPassword());
+            User userLocalize = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
 
             if(userLocalize != null){
                 return ResponseEntity.status(HttpStatus.OK).body(Map.of("status",true,"data",userLocalize));
